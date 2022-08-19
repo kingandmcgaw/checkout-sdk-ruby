@@ -10,7 +10,7 @@ class CheckoutSdk::PaymentRequestSource
                 :success_url, :failure_url, :payment_ip, :recipient_dob, :recipient_account_number,
                 :recipient_zip, :recipient_last_name, :processing_mid, :metadata, :cvv, :id, :card_number,
                 :card_expiry_month, :card_expiry_year, :card_name, :card_cvv, :card_stored, :customer_id,
-                :customer_email, :merchant_initiated
+                :customer_email, :merchant_initiated, :threeds_challenge_indicator
 
   def data
     { source: source(type),
@@ -51,7 +51,8 @@ class CheckoutSdk::PaymentRequestSource
         eci: threeds_eci,
         cryptogram: threeds_cryptogram,
         xid: threeds_xid,
-        version: threeds_version
+        version: threeds_version,
+        challenge_indicator: threeds_challenge_indicator
       },
       previous_payment_id: previous_payment_id,
       risk: {
